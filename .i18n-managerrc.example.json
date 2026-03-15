@@ -1,0 +1,7 @@
+{
+  "baselinePath": "src/i18n/en.json",
+  "historyDir": ".translation-history",
+  "projectRoot": ".",
+  "translationPaths": ["src/i18n/"],
+  "supportedLanguages": ["de", "fr", "es"]
+}
