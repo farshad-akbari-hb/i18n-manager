@@ -32,7 +32,7 @@ let _config: ManagerConfig | null = null;
 function resolveTranslatorCliPath(): string {
   // Try require.resolve first
   try {
-    return require.resolve('@farshad-ak/i18n-translator/dist/index.js');
+    return require.resolve('@farshad-akbari-hb/i18n-translator/dist/index.js');
   } catch {
     // Fallback: look in node_modules relative to cwd
     return path.join(process.cwd(), 'node_modules', '@farshad', 'i18n-translator', 'dist', 'index.js');
