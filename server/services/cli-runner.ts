@@ -75,13 +75,15 @@ export class TranslationJob extends EventEmitter {
     console.log(`[Job ${this.id}] CLI path: ${config.translatorCliPath}`);
     console.log(`[Job ${this.id}] Baseline: ${config.baselinePath}`);
 
-    // Spawn the CLI process
-    this.process = spawn('node', [
+    // Build CLI args
+    const args = [
       config.translatorCliPath,
       'translate',
       '-b', config.baselinePath,
       '-t', ...this.languages,
-    ], {
+    ];
+    // Spawn the CLI process (translator reads context from .i18n-translatorrc.json in its cwd)
+    this.process = spawn('node', args, {
       cwd: config.translatorCwd,
       env: { ...process.env },
     });

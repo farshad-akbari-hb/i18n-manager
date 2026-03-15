@@ -61,6 +61,32 @@ The i18n Manager complements the AI-powered `i18n-translator` CLI by providing a
 - **Discard Changes** - Revert changes to translation files
 - **Toast Notifications** - Success/error feedback for all operations
 
+## Configuration
+
+The manager reads from `.i18n-translatorrc.json` in the project root — the same config file used by the translator:
+
+```json
+{
+  "baselinePath": "src/i18n/en.json",
+  "historyDir": ".translation-history",
+  "context": "Your domain description for better translations",
+  "projectRoot": ".",
+  "translationPaths": ["src/i18n/"],
+  "supportedLanguages": ["de", "fr", "es"]
+}
+```
+
+| Field | Used By | Description |
+|-------|---------|-------------|
+| `baselinePath` | Both | Path to baseline JSON |
+| `historyDir` | Both | History directory |
+| `context` | Translator | Domain context for translations |
+| `projectRoot` | Manager | Project root directory |
+| `translationPaths` | Manager | Directories containing translation files |
+| `supportedLanguages` | Manager | Languages to manage |
+| `translatorCliPath` | Manager | Path to translator CLI (auto-resolved) |
+| `translatorCwd` | Manager | Working directory for translator (defaults to projectRoot) |
+
 ## Quick Start
 
 ```bash

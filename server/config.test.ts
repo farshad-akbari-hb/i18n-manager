@@ -214,9 +214,8 @@ describe('buildConfig — output shape', () => {
     expect(path.isAbsolute(config.projectRoot)).toBe(true);
   });
 
-  it('translatorCwd defaults to dirname of translatorCliPath', () => {
-    const rc = minimalRc({ translatorCliPath: 'tools/translator/dist/index.js' });
-    const config = buildConfig(rc, noEnv(), TEST_CWD);
-    expect(config.translatorCwd).toBe(path.dirname(config.translatorCliPath));
+  it('translatorCwd defaults to projectRoot', () => {
+    const config = buildConfig(minimalRc(), noEnv(), TEST_CWD);
+    expect(config.translatorCwd).toBe(config.projectRoot);
   });
 });

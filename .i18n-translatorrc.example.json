@@ -1,6 +1,7 @@
 {
   "baselinePath": "src/i18n/en.json",
   "historyDir": ".translation-history",
+  "context": "Your domain description for better translations",
   "projectRoot": ".",
   "translationPaths": ["src/i18n/"],
   "supportedLanguages": ["de", "fr", "es"]

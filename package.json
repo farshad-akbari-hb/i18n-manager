@@ -10,7 +10,7 @@
   "files": [
     "dist/",
     "README.md",
-    ".i18n-managerrc.example.json"
+    ".i18n-translatorrc.example.json"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

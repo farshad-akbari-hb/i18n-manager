@@ -1,7 +1,7 @@
 /**
  * Centralized configuration for i18n-manager
  *
- * Resolution order: env vars > .i18n-managerrc.json > defaults
+ * Resolution order: env vars > .i18n-translatorrc.json > defaults
  */
 
 import { readFileSync } from 'fs';
@@ -40,7 +40,7 @@ function resolveTranslatorCliPath(): string {
 }
 
 export function loadRcFile(cwd: string = process.cwd()): RcFile | null {
-  const rcPath = path.join(cwd, '.i18n-managerrc.json');
+  const rcPath = path.join(cwd, '.i18n-translatorrc.json');
   try {
     const content = readFileSync(rcPath, 'utf-8');
     return JSON.parse(content) as RcFile;
@@ -97,7 +97,7 @@ export function buildConfig(
   );
   if (!baselineResult.value) {
     throw new Error(
-      'i18n-manager: baselinePath is required. Set it in .i18n-managerrc.json or I18N_MANAGER_BASELINE_PATH env var.'
+      'i18n-manager: baselinePath is required. Set it in .i18n-translatorrc.json or I18N_MANAGER_BASELINE_PATH env var.'
     );
   }
   const baselinePath = path.resolve(projectRoot, baselineResult.value);
@@ -113,7 +113,7 @@ export function buildConfig(
     sources['supportedLanguages'] = 'rc file';
   } else {
     throw new Error(
-      'i18n-manager: supportedLanguages is required. Set it in .i18n-managerrc.json or I18N_MANAGER_SUPPORTED_LANGUAGES env var.'
+      'i18n-manager: supportedLanguages is required. Set it in .i18n-translatorrc.json or I18N_MANAGER_SUPPORTED_LANGUAGES env var.'
     );
   }
 
@@ -144,7 +144,7 @@ export function buildConfig(
     'translatorCwd',
     env.I18N_MANAGER_TRANSLATOR_CWD,
     rc?.translatorCwd,
-    path.dirname(translatorCliPath)
+    projectRoot
   );
   const translatorCwd = path.resolve(projectRoot, cwdResult.value!);
   sources['translatorCwd'] = cwdResult.source;
